@@ -51,7 +51,7 @@ const Fav = () => {
   }, [])
   return (
     <section className='border min-h-screen p-8'>
-      <p className='text-[#4b5c6b] text-[1.5rem] font-Montserrat font-semibold flex items-center justify-between w-full'>Welcome to Favorite NPM Packages <button className='border-2 rounded-md px-4 py-1 bg-[#6558f5] text-white text-[1.2rem]'>Add fav</button></p>
+      <p className='text-[#4b5c6b] text-[1.5rem] font-Montserrat font-semibold flex items-center justify-between w-full'>Welcome to Favorite NPM Packages <button className='border-2 rounded-md px-4 py-1 bg-[#6558f5] text-white text-[1.2rem]' onClick={()=> naviagte("/")}>Home Page</button></p>
       <div className='border-2 border-[#4b5c6b] mt-4 overflow-x-auto'>
         <table className="table border collapse">
           <thead>
