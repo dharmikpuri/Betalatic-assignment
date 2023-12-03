@@ -8,7 +8,7 @@ const SingleFav = () => {
     // console.log(id)
     console.log(data,"DATA");
     useEffect(()=>{
-        axios.get(`http://localhost:3001/fav/${id}`)
+        axios.get(`https://sponge-juicy-tub.glitch.me/fav/${id}`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err))
     },[]);
