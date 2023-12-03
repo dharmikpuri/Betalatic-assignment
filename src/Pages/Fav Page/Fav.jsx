@@ -2,22 +2,27 @@ import { useEffect, useState } from 'react'
 import axios from "axios"
 import { FaEye, FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { useNavigate } from 'react-router-dom';
 
 
 const Fav = () => {
+  const naviagte = useNavigate();
   const [data, setData] = useState([])
 
   const getData = () => {
-    axios.get("http://localhost:3001/fav")
+    axios.get("https://sponge-juicy-tub.glitch.me/fav")
       .then((res) => setData(res.data))
       .catch((err) => console.log(err))
   }
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/fav/${id}`)
+    axios.delete(`https://sponge-juicy-tub.glitch.me/fav/${id}`)
       .then(() => {
         alert("Deleted Successfuly");
         getData();
       })
+  }
+  const handleView=(id)=>{
+     naviagte(`/fav/${id}`)
   }
   useEffect(() => {
     getData();
@@ -38,8 +43,8 @@ const Fav = () => {
               <tr key={i} className='border border-[#4b5c6b]'>
                 <td className='text-[1rem] font-Montserrat font-bold text-black'>{el.name}</td>
                 <td className='flex gap-4 items-center'>
-                  <button className='border border-black rounded-md font-medium  px-4 py-1 text-[1rem] hover:bg-[#41ce41] '><FaEye /></button>
-                  <button onClick={() => handleDelete(el.id)} className='border border-black rounded-md font-medium  px-4 py-1 text-[1rem] hover:bg-red-400 '><RiDeleteBin6Fill /></button>
+                  <button className='border border-black rounded-md font-medium  px-4 py-1 text-[1rem] hover:bg-[#41ce41] ' onClick={()=>handleView(el.id)}><FaEye /></button>
+                  <button onClick={() => handleDelete(el.id)} className='border border-black rounded-md font-medium  px-4 py-1 text-[1rem] hover:bg-red-400 ' ><RiDeleteBin6Fill /></button>
                   <button className='border border-black rounded-md font-medium  px-4 py-1 text-[1rem] hover:bg-[orange] '><FaEdit /></button>
                 </td>
               </tr>
